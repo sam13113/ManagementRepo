@@ -33,7 +33,7 @@ public class Role {
 
 	@Id
 	@Column(name="ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	@Column(name="NAME")

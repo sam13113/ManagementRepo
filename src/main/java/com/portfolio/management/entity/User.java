@@ -4,6 +4,7 @@
 package com.portfolio.management.entity;
 
 import java.util.Collection;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.*;
@@ -34,21 +35,24 @@ import lombok.NoArgsConstructor;
 public class User {
 
 	@Id
-	@Column(name="ID")
+	@Column(name = "ID")
 	@SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
 	private Long id;
-	@Column(name="FIRST_NAME")
+	@Column(name = "FIRST_NAME")
 	private String firstName;
-	@Column(name="LAST_NAME")
+	@Column(name = "LAST_NAME")
 	private String lastName;
-	@Column(name="USER_NAME")
+	@Column(name = "USER_NAME", unique = true)
 	private String userName;
 	@JsonIgnore
 	private String password;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "user_role_map", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-	inverseJoinColumns = @JoinColumn(name = "user_role_id", referencedColumnName = "id"))
+	@JoinTable(name = "user_role_map", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "user_role_id", referencedColumnName = "id"))
 	private Collection<Role> roles;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "USER_ID")
+	private Set<UserContact> userContacts;
 }

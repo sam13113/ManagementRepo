@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.portfolio.management.entity.User;
 import com.portfolio.management.repository.RoleRepository;
+import com.portfolio.management.repository.UserContactRepository;
 import com.portfolio.management.repository.UserRepository;
 import com.portfolio.management.service.UserService;
 
@@ -26,11 +27,14 @@ public class UserServiceImpl implements UserService {
 
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
+	private UserContactRepository userContactRepository;
 
 	@Autowired
-	public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+	public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
+			UserContactRepository userContactRepository) {
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;
+		this.userContactRepository = userContactRepository;
 	}
 
 	@Override
@@ -55,7 +59,7 @@ public class UserServiceImpl implements UserService {
 		if (userRepository.findById(id).isPresent())
 			return new ResponseEntity<>(userRepository.findById(id).get(), HttpStatus.OK);
 		else
-			return new ResponseEntity<>(userRepository.findById(id).get(), HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	@Override
