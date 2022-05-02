@@ -20,12 +20,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
+ * The entity class represents a User. It stores the relavant details for a user
+ * including their {@link Role}s and {@link UserContact}s.
+ * 
  * @author Sarath
- *
+ * @since 0.1
  */
 @Entity
 @Data

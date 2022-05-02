@@ -4,25 +4,28 @@
 package com.portfolio.management.repository;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 import org.springframework.stereotype.Repository;
 
 import com.portfolio.management.entity.User;
 
 /**
+ * Repository interface for {@link User} entity.
+ * 
  * @author Sarath
- *
+ * @since 0.1
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-	
+
+	/**
+	 * A custom method to fetch all {@link User}s from the repository having
+	 * particular firstName.
+	 * 
+	 * @param firstName to be searched in db.
+	 * @return List of all {@link User}s having the firstName same as that of the
+	 *         param.
+	 */
 	public List<User> findAllByFirstName(String firstName);
 }

@@ -3,15 +3,11 @@
  */
 package com.portfolio.management.entity;
 
-import java.util.Collection;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -20,8 +16,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * This entity class represents the user-roles that are to be assigned to
+ * {@link User}. Current design assumes that all new Users are given a initial
+ * role of 'User' which can later be modified by the Admin/Manager.
+ * 
  * @author Sarath
- *
+ * @since 0.1
  */
 @Entity
 @Table(name = "USER_ROLE")
@@ -32,20 +32,20 @@ import lombok.NoArgsConstructor;
 public class Role {
 
 	@Id
-	@Column(name="ID")
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(name="NAME")
+	@Column(name = "NAME")
 	private String name;
 
-	@Column(name="DESCRIPTION")
+	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@Column(name="ACTIVE")
+	@Column(name = "ACTIVE")
 	private boolean active;
 
-	@Column(name="PRIORITY")
+	@Column(name = "PRIORITY")
 	private int priority;
 
 }
