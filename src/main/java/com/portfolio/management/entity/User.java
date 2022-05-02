@@ -23,7 +23,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * The entity class represents a User. It stores the relavant details for a user
+ * The entity class represents a User. It stores the relevant details for a user
  * including their {@link Role}s and {@link UserContact}s.
  * 
  * @author Sarath
@@ -38,7 +38,7 @@ public class User {
 
 	@Id
 	@Column(name = "ID")
-	@SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
+	@SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1, initialValue = 5)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
 	private Long id;
 	@Column(name = "FIRST_NAME")

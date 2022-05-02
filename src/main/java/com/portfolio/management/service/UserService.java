@@ -71,8 +71,8 @@ public interface UserService {
 	 * The service method to update a {@link User} in the db.
 	 * 
 	 * @param {@link User} object.
-	 * @return a {@link ResponseEntity} with {@link HttpStatus} 202 and updated entity
-	 *         {@link User} or else {@link HttpStatus} 304.
+	 * @return a {@link ResponseEntity} with {@link HttpStatus} 202 and updated
+	 *         entity {@link User} or else {@link HttpStatus} 304.
 	 */
 	public ResponseEntity<User> updateUser(User user, long id);
 

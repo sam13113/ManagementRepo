@@ -30,7 +30,7 @@ public class UserContact {
 
 	@Id
 	@Column(name = "ID")
-	@SequenceGenerator(name = "user_contact_sequence", sequenceName = "user_contact_sequence", allocationSize = 1)
+	@SequenceGenerator(name = "user_contact_sequence", sequenceName = "user_contact_sequence", allocationSize = 1, initialValue = 5)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_contact_sequence")
 	private Long id;
 
