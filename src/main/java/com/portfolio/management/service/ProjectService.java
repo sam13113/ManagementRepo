@@ -50,7 +50,7 @@ public interface ProjectService {
 	/**
 	 * The service method to update a {@link Project} in the db.
 	 * 
-	 * @param {@link Project} object.
+	 * @param {@link Project} object and Project-Id.
 	 * @return a {@link ResponseEntity} with {@link HttpStatus} 202 and updated
 	 *         entity {@link Project} or else {@link HttpStatus} 304.
 	 */
