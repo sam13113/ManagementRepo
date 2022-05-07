@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.portfolio.management.entity.Portfolio;
 import com.portfolio.management.entity.Project;
 import com.portfolio.management.service.ProjectService;
 
@@ -46,13 +47,15 @@ public class ProjectController {
 	/**
 	 * This end-point is used to save {@link Project} via post request.
 	 * 
-	 * @param the request body has the {@link Project} body as a json body.
+	 * @param the request body has the {@link Project} as a json body and the
+	 *            associated {@link Portfolio}-id as Request param.
 	 * @return returns a {@link ResponseEntity} which has the {@link HttpStatus} and
 	 *         a json format of the saved {@link Project}.
 	 */
 	@PostMapping(value = "/project")
-	public ResponseEntity<Project> saveProject(@RequestBody Project project) {
-		return this.projectService.saveProject(project);
+	public ResponseEntity<Project> saveProject(@RequestBody Project project,
+			@RequestParam(name = "portfolioId") long portfolioId) {
+		return this.projectService.saveProject(project, portfolioId);
 	}
 
 	/**

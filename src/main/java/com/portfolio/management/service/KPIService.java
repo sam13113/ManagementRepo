@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 
 import com.portfolio.management.entity.KPI;
 import com.portfolio.management.entity.KPIData;
-import com.portfolio.management.entity.Project;
 
 /**
  * Service interface for all transactions relating to a {@link KPI } and
@@ -45,7 +44,7 @@ public interface KPIService {
 	 * 
 	 * @param {@link KPI} object and its associated project-id.
 	 * @return a {@link ResponseEntity} with {@link HttpStatus} 202 and saved entity
-	 *         {@link Project} or {@link HttpStatus} 304.
+	 *         {@link KPI} or {@link HttpStatus} 304.
 	 */
 	public ResponseEntity<KPI> saveKPI(KPI kpi, long projectId);
 

@@ -63,7 +63,7 @@ public class KPIController {
 	 * This end-point is used to get a {@link KPI} having a specific KPI-id via get
 	 * request.
 	 * 
-	 * @param as request param the project-id.
+	 * @param as request param the KPI-id.
 	 * @return returns a {@link ResponseEntity} which has the {@link HttpStatus} and
 	 *         as json the {@link KPI} if present, else empty response with
 	 *         HTTPStatus 204.
@@ -95,7 +95,7 @@ public class KPIController {
 	 * @param the request body has the {@link KPI} as a json and as Request
 	 *            parameter the KPI-id.
 	 * @return returns a {@link ResponseEntity} which has the {@link HttpStatus} and
-	 *         a json format of the updated {@link Project}.
+	 *         a json format of the updated {@link KPI}.
 	 */
 	@PutMapping(value = "/kpi")
 	public ResponseEntity<KPI> updateKPIById(@RequestBody KPI kpi, @RequestParam(name = "kpiId") long kpiId) {

@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,45 +20,33 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * This entity class a Project in the the organization.
+ * This entity class for a ServiceOffering associated to a
+ * {@link OperationalEntity}.
  * 
  * @author Sarath
  * @since 0.1
  *
  */
 @Entity
+@Table(name = "service_offering")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Project {
+public class ServiceOffering {
 
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	@Column(name = "PRJ_NAME")
-	private String projectName;
-	@Column(name = "PRJ_DESCRIPTION")
-	private String projectDescription;
-	@Column(name = "DEPARTMENT")
-	private String department;
+	@Column(name = "SERVICE_NAME")
+	private String serviceName;
+	@Column(name = "SERVICE_DESCRIPTION")
+	private String servicedescription;
 	@Column(name = "BUSINESS_WEIGHTAGE")
 	private int businessWeightage;
-	@Column(name = "DEVELOPMENT_METHODOLOGY")
-	private String developmentMethodology;
-	@OneToOne(optional = true)
-	@JoinColumn(name = "SERVICE_OWNER_IT_ID")
-	private User ownerIT;
-	@OneToOne(optional = true)
-	@JoinColumn(name = "SERVICE_OWNER_BUSINESS_ID")
-	private User ownerBusiness;
-	@OneToOne(optional = true)
-	@JoinColumn(name = "SERVICE_MANAGER_ID")
-	private User manager;
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "PORTFOLIO_ID")
-	private Portfolio portfolio;
-
+	@JoinColumn(name = "OPERATING_ENTITY_ID")
+	private OperatingEntity operatingEntity;
 }

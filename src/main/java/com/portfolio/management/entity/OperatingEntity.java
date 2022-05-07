@@ -12,9 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -23,38 +20,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * This entity class for a KPI associated to a {@link Project}.
+ * This entity class for a OperationalEntity associated to a {@link Country}.
  * 
  * @author Sarath
  * @since 0.1
  *
  */
 @Entity
-@Table(name = "kpi")
+@Table(name = "operating_entity")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class KPI {
+public class OperatingEntity {
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "KPI_NAME")
-	private String kpiName;
-	@Column(name = "KPI_DESCRIPTION")
-	private String kpiDescription;
-	@Column(name = "THRESHOLD_MAX")
-	private int thresholdMax;
-	@Column(name = "THRESHOLD_MIN")
-	private int thresholdMin;
-	@Column(name = "BUSINESS_WEIGHTAGE")
-	private int businessWeightage;
+	@Column(name = "ENTITY_NAME")
+	private String entityName;
 	@JsonIgnore
 	@ManyToOne
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(name = "PROJECT_ID")
-	private Project project;
-
+	@JoinColumn(name = "COUNTRY_ID")
+	private Country country;
 }

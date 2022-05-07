@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.portfolio.management.entity.Project;
+import com.portfolio.management.repository.PortfolioRepository;
 import com.portfolio.management.repository.ProjectRepository;
 import com.portfolio.management.service.ProjectService;
 
@@ -25,13 +26,15 @@ import com.portfolio.management.service.ProjectService;
 public class ProjectServiceImpl implements ProjectService {
 
 	private ProjectRepository projectRepository;
+	private PortfolioRepository portfolioRepository;
 
 	/**
 	 * All arguments constructor with dependency injected repository objects.
 	 */
 	@Autowired
-	public ProjectServiceImpl(ProjectRepository projectRepository) {
+	public ProjectServiceImpl(ProjectRepository projectRepository, PortfolioRepository portfolioRepository) {
 		this.projectRepository = projectRepository;
+		this.portfolioRepository = portfolioRepository;
 	}
 
 	/**
@@ -58,8 +61,12 @@ public class ProjectServiceImpl implements ProjectService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public ResponseEntity<Project> saveProject(Project project) {
-		return new ResponseEntity<>(this.projectRepository.saveAndFlush(project), HttpStatus.ACCEPTED);
+	public ResponseEntity<Project> saveProject(Project project, long PortfolioId) {
+		if (portfolioRepository.findById(PortfolioId).isPresent()) {
+			project.setPortfolio(portfolioRepository.findById(PortfolioId).get());
+			return new ResponseEntity<>(this.projectRepository.saveAndFlush(project), HttpStatus.ACCEPTED);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
 	}
 
 	/**

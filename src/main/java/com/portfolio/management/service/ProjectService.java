@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.portfolio.management.entity.Portfolio;
 import com.portfolio.management.entity.Project;
 
 /**
@@ -39,13 +40,15 @@ public interface ProjectService {
 	public ResponseEntity<Project> getProjectById(long projectId);
 
 	/**
-	 * The service method to save a {@link Project} to the db.
+	 * The service method to save a {@link Project} to the db and linking it to
+	 * corresponding {@link Portfolio}.
 	 * 
-	 * @param {@link Project} object.
+	 * @param {@link Project} object and {@link Portfolio}-id.
 	 * @return a {@link ResponseEntity} with {@link HttpStatus} 202 and saved entity
-	 *         {@link Project}.
+	 *         {@link Project} if {@link Portfolio} is found else {@link HttpStatus}
+	 *         304 .
 	 */
-	public ResponseEntity<Project> saveProject(Project project);
+	public ResponseEntity<Project> saveProject(Project project, long PorfolioId);
 
 	/**
 	 * The service method to update a {@link Project} in the db.
