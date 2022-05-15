@@ -37,7 +37,7 @@ public class Country {
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	@Column(name = "COUNTRY_CODE", unique = true)
 	private String countryCode;

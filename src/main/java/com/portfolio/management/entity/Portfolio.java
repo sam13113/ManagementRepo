@@ -39,7 +39,7 @@ public class Portfolio {
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	@Column(name = "PORTFOLIO_NAME")
 	private String portfolioName;

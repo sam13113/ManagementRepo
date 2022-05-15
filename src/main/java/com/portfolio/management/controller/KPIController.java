@@ -111,7 +111,7 @@ public class KPIController {
 	 *         204.
 	 */
 	@DeleteMapping(value = "/deleteKPI")
-	public ResponseEntity<KPI> deleteProjectById(@RequestParam(name = "kpiId") long id) {
+	public ResponseEntity<KPI> deleteKPIById(@RequestParam(name = "kpiId") long id) {
 		return this.kpiService.deleteKPI(id);
 	}
 

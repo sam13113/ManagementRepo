@@ -36,7 +36,7 @@ public class OperatingEntity {
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	@Column(name = "ENTITY_NAME")
 	private String entityName;
