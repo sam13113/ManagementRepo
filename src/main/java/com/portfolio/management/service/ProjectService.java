@@ -29,6 +29,16 @@ public interface ProjectService {
 	public ResponseEntity<List<Project>> getAllProjects();
 
 	/**
+	 * The service method to get all {@link Project} from the db associated to a
+	 * particular {@link Portfolio}
+	 * 
+	 * @param portfolio-id.
+	 * @return a {@link ResponseEntity} with {@link HttpStatus} 302 and list of all
+	 *         {@link Project} entities.
+	 */
+	public ResponseEntity<List<Project>> getAllProjectsForPortfolioId(long portfolioId);
+
+	/**
 	 * The service method to get a {@link Project} from the db having particular
 	 * project-id.
 	 * 

@@ -21,12 +21,13 @@ public interface PortfolioService {
 
 	/**
 	 * The service method to get all {@link Portfolio} from the db associated to a
-	 * particular project.
+	 * particular ServiceOffering.
 	 * 
+	 * @param ServiceOffering-id.
 	 * @return a {@link ResponseEntity} with {@link HttpStatus} 302 and list of all
 	 *         {@link Portfolio} entities.
 	 */
-	public ResponseEntity<List<Portfolio>> getAllPortfolios();
+	public ResponseEntity<List<Portfolio>> getAllPortfoliosForServiceOfferingId(long serviceOfferingId);
 
 	/**
 	 * The service method to get a {@link Portfolio} from the db having particular

@@ -1,3 +1,4 @@
+-- CREATE SCHEMA `portfolio_manager` ;
 USE `portfolio_manager`;
 
 DROP TABLE IF EXISTS `USER_ROLE_MAP`;

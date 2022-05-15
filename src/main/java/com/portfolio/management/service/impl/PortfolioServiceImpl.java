@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.portfolio.management.entity.Portfolio;
 import com.portfolio.management.repository.PortfolioRepository;
+import com.portfolio.management.repository.ServiceOfferingRepository;
 import com.portfolio.management.service.PortfolioService;
 
 /**
@@ -25,22 +26,29 @@ import com.portfolio.management.service.PortfolioService;
 public class PortfolioServiceImpl implements PortfolioService {
 
 	private PortfolioRepository portfolioRepository;
+	private ServiceOfferingRepository serviceOfferingRepository;
 
 	/**
 	 * All arguments constructor with dependency injected repository objects.
 	 */
 	@Autowired
-	public PortfolioServiceImpl(PortfolioRepository portfolioRepository) {
+	public PortfolioServiceImpl(PortfolioRepository portfolioRepository,
+			ServiceOfferingRepository serviceOfferingRepository) {
 		this.portfolioRepository = portfolioRepository;
+		this.serviceOfferingRepository = serviceOfferingRepository;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public ResponseEntity<List<Portfolio>> getAllPortfolios() {
-		List<Portfolio> listOfPortfolios = this.portfolioRepository.findAll();
-		return new ResponseEntity<>(listOfPortfolios, HttpStatus.FOUND);
+	public ResponseEntity<List<Portfolio>> getAllPortfoliosForServiceOfferingId(long serviceOfferingId) {
+		if (this.serviceOfferingRepository.findById(serviceOfferingId).isPresent()) {
+			List<Portfolio> listOfServiceOfferings = this.portfolioRepository
+					.findAllByServiceOfferingId(serviceOfferingId);
+			return new ResponseEntity<>(listOfServiceOfferings, HttpStatus.FOUND);
+		}
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	/**

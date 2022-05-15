@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.portfolio.management.entity.Portfolio;
+import com.portfolio.management.entity.ServiceOffering;
 import com.portfolio.management.service.PortfolioService;
 
 /**
@@ -44,15 +45,18 @@ public class PortfolioController {
 	}
 
 	/**
-	 * This end-point is used to get all {@link Portfolio}s from the db.
+	 * This end-point is used to get all {@link Portfolio}s having a specific
+	 * ServiceOffering-id via get request.
 	 * 
+	 * @param as request param the {@link ServiceOffering}-id
 	 * @return returns a {@link ResponseEntity} which has the {@link HttpStatus} and
-	 *         as json the list of {@link Portfolio} if present, else empty response
-	 *         with HTTPStatus 204.
+	 *         as json the list of {@link ServiceOffering} if present, else empty
+	 *         response with HTTPStatus 204.
 	 */
 	@GetMapping(value = "/getAllPortfolio")
-	public ResponseEntity<List<Portfolio>> getAllPortfolios() {
-		return this.portfolioService.getAllPortfolios();
+	public ResponseEntity<List<Portfolio>> getAllPortfolios(
+			@RequestParam(name = "serviceOfferingId") long serviceOfferingId) {
+		return this.portfolioService.getAllPortfoliosForServiceOfferingId(serviceOfferingId);
 	}
 
 	/**

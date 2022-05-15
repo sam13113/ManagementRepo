@@ -1,5 +1,5 @@
--- CREATE SCHEMA `portfolio_manager` ;
 USE `portfolio_manager`;
+
 -- Table COUNTRY
 CREATE TABLE `COUNTRY` (
     `ID` BIGINT UNSIGNED NOT NULL PRIMARY KEY,

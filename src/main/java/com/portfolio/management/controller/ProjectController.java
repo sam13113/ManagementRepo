@@ -70,6 +70,21 @@ public class ProjectController {
 	}
 
 	/**
+	 * This end-point is used to get all {@link Project}s having a specific
+	 * Portfolio-id via get request.
+	 * 
+	 * @param as request param the {@link Portfolio}-id
+	 * @return returns a {@link ResponseEntity} which has the {@link HttpStatus} and
+	 *         as json the list of {@link Project} if present, else empty response
+	 *         with HTTPStatus 204.
+	 */
+	@GetMapping(value = "/getProjectsByPortfolio")
+	public ResponseEntity<List<Project>> getAllProjectssByPortfolioId(
+			@RequestParam(name = "portfolioId") long portfolioId) {
+		return this.projectService.getAllProjectsForPortfolioId(portfolioId);
+	}
+
+	/**
 	 * This end-point is used to get a {@link Project} having a specific project-id
 	 * via get request.
 	 * 

@@ -108,4 +108,16 @@ public class ProjectServiceImpl implements ProjectService {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public ResponseEntity<List<Project>> getAllProjectsForPortfolioId(long portfolioId) {
+		if (this.portfolioRepository.findById(portfolioId).isPresent()) {
+			List<Project> listOfProjects = this.projectRepository.findAllByPortfolioId(portfolioId);
+			return new ResponseEntity<>(listOfProjects, HttpStatus.FOUND);
+		}
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
 }
