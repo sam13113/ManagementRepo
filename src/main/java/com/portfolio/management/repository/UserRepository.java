@@ -28,4 +28,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	 *         param.
 	 */
 	public List<User> findAllByFirstName(String firstName);
+
+	/**
+	 * A custom method to fetch a {@link User} from the repository having particular
+	 * userName.
+	 * 
+	 * @param firstName to be searched in db.
+	 * @return {@link User} having the userName same as that of the param.
+	 */
+	public User findByUserName(String userName);
 }

@@ -112,4 +112,5 @@ public interface UserService {
 	 * @return a {@link ResponseEntity} with {@link HttpStatus} 204.
 	 */
 	public ResponseEntity<UserContact> deleteUserContactById(long userContactId);
+
 }
